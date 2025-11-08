@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Juan Rodriguez - Desarrollador Web</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #1a1a2e;
+            --card-bg: #22223b;
+            --primary-color: #e94560;
+            --secondary-color: #0f3460;
+            --text-light: #ffffff;
+            --text-muted: #f0f0f0;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--bg-color);
+            scroll-behavior: smooth;
+            padding-top: 60px; 
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(34, 34, 59, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            height: 60px;
+        }
+
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-logo:hover {
+            color: var(--text-light);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+        }
+
+        .main-nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color var(--transition-speed), border-bottom var(--transition-speed);
+            border-bottom: 2px solid transparent;
+        }
+
+        .main-nav ul li a:hover {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        #inicio, #acerca, #habilidades, #proyectos, #contacto {
+            scroll-margin-top: 60px;
+        }
+        
+        #inicio {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+        }
+
+        #inicio img {
+            width: 300px;
+            height: auto;
+            margin: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .container2 {
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .hero {
+            padding: 0;
+            min-height: calc(100vh - 60px); 
+            display: flex;
+            align-items: center;
+            background-image: url(luxa.org-opacity-changed-._68-686248_mcpe-wallpaper.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--text-light);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #d13050;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(233, 69, 96, 0.5);
+        }
+
+        .about-me p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .about-me strong {
+            color: var(--text-light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            background-color: var(--card-bg);
+            padding: 20px 10px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform var(--transition-speed), background-color var(--transition-speed);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background-color: #3f4c6b;
+        }
+
+        .skill-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .skill-item p {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .carousel-container {
+            display: flex; 
+            overflow-x: hidden;
+            scroll-behavior: smooth; 
+            max-width: 100%;
+            margin: 0 auto;
+            padding-bottom: 10px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            text-align: left;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            flex: 0 0 100%; 
+            margin-right: 0; 
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: #3f4c6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image-placeholder img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .project-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+        }
+
+        .project-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .project-links a .fab,
+        .project-links a .fas {
+            margin-right: 5px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            line-height: 1;
+            border-radius: 5px;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .prev-btn {
+            left: -20px;
+        }
+
+        .next-btn {
+            right: -20px;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+
+        .back-to-top {
+            display: none; 
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: background-color var(--transition-speed), opacity var(--transition-speed);
+            z-index: 999;
+        }
+
+        .back-to-top:hover {
+            background-color: #d13050;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background-color: var(--card-bg);
+            padding: 40px 0;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+        }
+
+        .contact-info a:hover {
+            color: #d13050;
+            text-decoration: underline;
+        }
+
+        .contact-info a .fab,
+        .contact-info a .fas {
+            margin-right: 5px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            
+            .nav-logo {
+                display: none; 
+            }
+            
+            .main-nav .container {
+                justify-content: center;
+            }
+            
+            .main-nav ul {
+                gap: 15px;
+            }
+            
+            .main-nav ul li a {
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                min-height: calc(100vh - 40px); 
+            }
+
+            #inicio {
+                flex-direction: column;
+                gap: 30px;
+                padding: 40px 20px;
+            }
+
+            #inicio img {
+                width: 150px; 
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                margin-bottom: 25px;
+            }
+
+            section {
+                padding: 50px 0; 
+            }
+
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            .about-me p {
+                font-size: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+            }
+
+            .skill-item i {
+                font-size: 2.5rem;
+            }
+
+            .prev-btn {
+                left: 5px; 
+            }
+
+            .next-btn {
+                right: 5px;
+            }
+            
+            .project-image-placeholder {
+                height: 250px; 
+            }
+            
+            .project-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .project-links a {
+                display: block;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .contact-info {
+                display: flex;
+                flex-direction: column; 
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <nav class="main-nav">
+        <div class="container">
+            <a href="#inicio" class="nav-logo">JR</a>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#acerca">Acerca de Mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <img src="avatar.jpg" alt="">
+        <div class="container2">
+            <h1>Hola, Soy Juan Rodriguez</h1>
+            <p>Desarrollador Web con enfoque en soluciones limpias y eficientes.</p>
+            <a href="cv_juan_rodriguez.pdf" download class="btn btn-primary">Descargar Mi CV</a>
+        </div>
+    </header>
+
+    <section id="acerca" class="about-me">
+        <div class="container">
+            <h2>Acerca de Mí</h2>
+            <p>Soy un desarrollador con experiencia en el stack HTML/CSS. Mi trabajo se centra en la maquetación y la
+                lógica Front-end, creando sitios web funcionales y visualmente atractivos.</p>
+            <p style="margin-top: 15px;">Me especializo en la implementación de diseños responsivos y en asegurar que
+                cada proyecto ofrezca una excelente experiencia de usuario. Siempre estoy buscando aprender nuevas
+                herramientas y optimizar mi código.</p>
+        </div>
+    </section>
+    
+    <section id="habilidades" class="skills">
+        <div class="container">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fab fa-html5"></i>
+                    <p>HTML5</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <p>CSS3</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-js-square"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <p>Responsive Design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2>Proyectos Destacados</h2>
+            
+            <div class="carousel-wrapper">
+                
+                <button id="prevBtn" class="carousel-btn prev-btn" aria-label="Proyecto Anterior"><i class="fas fa-chevron-left"></i></button>
+
+                <div id="project-carousel" class="carousel-container">
+
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+                            <img src="factura.jpeg" alt="Replica Factura Web">
+                        </div>
+                        <div class="project-content">
+                            <h3>Factura Web</h3>
+                            <p>Replicación exacta de una factura de tienda practicando conceptos básicos de marquetado</p>
+                            <div class="project-links">
+                                <a href="https://juanda22-ty.github.io/factura_JuanRodriguez/" target="_blank"><i
+                                        class="fas fa-link"></i> Demo</a>
+                                <a href="https://github.com/juanda22-ty/factura_JuanRodriguez" target="_blank"><i
+                                        class="fab fa-github"></i> Código</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+                            <img src="tienda.jpeg" alt="Tienda Virtual">
+                        </div>
+                        <div class="project-content">
+                            <h3>Tienda Virtual</h3>
+                            <p>Simulación de una tienda en línea con carrito de compras interactivo y filtrado de productos
+                                basado en categorías.</p>
+                            <div class="project-links">
+                                <a href="https://juanda22-ty.github.io/JuanRodriguezTiendaWeb/" target="_blank"><i
+                                        class="fas fa-link"></i> Demo</a>
+                                <a href="https://github.com/juanda22-ty/JuanRodriguezTiendaWeb" target="_blank"><i
+                                        class="fab fa-github"></i> Código</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+                            <img src="jardineria.png" alt="Aplicación de Jardinería">
+                        </div>
+                        <div class="project-content">
+                            <h3>Jardineria J&J'S</h3>
+                            <p>Jardineria profesional para pedir cualquier tipo de servicio de mantenimiento y compra de
+                                flores online</p>
+                            <div class="project-links">
+                                <a href="https://juanda22-ty.github.io/JardineriaViveroJuan/" target="_blank"><i
+                                        class="fas fa-link"></i> Demo</a>
+                                <a href="https://github.com/juanda22-ty/JardineriaViveroJuan" target="_blank"><i
+                                        class="fab fa-github"></i> Código</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+                            <img src="juegotactica.png" alt="Juego - Comando Frontera">
+                        </div>
+                        <div class="project-content">
+                            <h3>Juego - Comando Frontera</h3>
+                            <p>Juego interactivo de táctica/estrategia con HTML/CSS y Javascript</p>
+                            <div class="project-links">
+                                <a href="https://juanda22-ty.github.io/JuegoTactico/" target="_blank"><i
+                                        class="fas fa-link"></i> Demo</a>
+                                <a href="https://github.com/juanda22-ty/JuegoTactico" target="_blank"><i
+                                        class="fab fa-github"></i> Código</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                
+                <button id="nextBtn" class="carousel-btn next-btn" aria-label="Proyecto Siguiente"><i class="fas fa-chevron-right"></i></button>
+
+            </div>
+            </div>
+    </section>
+
+    <footer class="footer" id="contacto">
+        <div class="container">
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <a href="juanrodriguezz4678@gmail.com" target="_blank"><i class="fas fa-envelope"></i>
+                    juanrodriguezz4678@gmail.com</a>
+                <a href="https://linkedin.com/in/tu-perfil" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/juanda22-ty" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+            <p class="copyright">Diseño Minimalista Oscuro. &copy; 2025 Juan Rodriguez.</p>
+        </div>
+    </footer>
+    
+    <button id="backToTopBtn" class="back-to-top" aria-label="Volver al inicio">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('project-carousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const cards = carousel.querySelectorAll('.project-card');
+            const backToTopBtn = document.getElementById('backToTopBtn');
+
+            const totalCards = cards.length;
+            let currentIndex = 0;
+
+            function scrollToCurrentIndex() {
+                requestAnimationFrame(() => {
+                    const scrollPosition = currentIndex * carousel.offsetWidth;
+                    carousel.scrollTo({
+                        left: scrollPosition,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < totalCards - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; 
+                }
+                scrollToCurrentIndex();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = totalCards - 1; 
+                }
+                scrollToCurrentIndex();
+            });
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.style.display = 'block';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
